@@ -40,11 +40,23 @@ body{
     width: 40%;
 }
 
+
 .main-div div{
     background-color: white;
-    box-shadow: 4px 2px 3px 5px rgba(0, 0, 0, 0.03);
-    height: 120px;
+    box-shadow: 4px 2px 1px 5px rgba(0, 0, 0, 0.03);
+    height: 140px;
+    border-radius: 5px;
+    font-size: 1.2rem;
 }
 .main-div div h1{
-    padding-top: 10px;
+    padding-top: 12px;
+}
+
+.main-div div p{
+    text-decoration: underline;
+    font-size: 0.9rem;
+}
+
+.img-mit{
+    width: 50%;
 }

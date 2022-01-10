@@ -1,0 +1,50 @@
+body{
+    background-color: rgba(211, 211, 211, 0.87);
+}
+.Log{
+    margin: 10% auto;
+    display: block;
+    width: 25%;
+    height: 220px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 2px 3px 5px rgba(0, 0, 0, 0.03);
+}
+
+.user{
+    width: 70%;
+    margin-top: 20px;
+    height: 30px;
+}
+
+.btn{
+    width: 30%;
+    background-color: rgb(14, 115, 209);
+    border: none;
+    height: 30px;
+    margin-top: 20px;
+    color: white;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.user-img{
+    width: 45%;
+    margin-top: -100px;
+}
+
+.main-div{
+    margin: 100px auto;
+    display: block;
+    width: 40%;
+}
+
+.main-div div{
+    background-color: white;
+    box-shadow: 4px 2px 3px 5px rgba(0, 0, 0, 0.03);
+    height: 120px;
+}
+.main-div div h1{
+    padding-top: 10px;
+}

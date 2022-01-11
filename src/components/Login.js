@@ -1,14 +1,17 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import Adpage from './Adpage';
+
+var n,d;
 
 export default function Login() {
   const [user, setuser] = useState();
   const navigate = useNavigate();
   const handleCheck = (e) => {
-    var n = String(user)
+    n = String(user)
     console.log(n.split('@')[1])
-    var d = n.split('@')[1];
+    d = n.split('@')[1];
     // axios.post("http://localhost:5000/get_participant/", {
     //     Domain: user
     //   }).then(response => {
@@ -29,6 +32,7 @@ export default function Login() {
     //   }).catch(error => {
     //     console.error('error >>> ', error);
     //   });
+    
     axios.post("http://localhost:5000/get_domain/", {
       Domain: d
     }).then(response => {
@@ -80,3 +84,5 @@ export default function Login() {
     </div>
   )
 }
+
+export {n};

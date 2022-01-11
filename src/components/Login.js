@@ -1,5 +1,5 @@
 import {React, useState} from 'react';
-import { Navigate, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import axios from 'axios';
 
 export default function Login() {

@@ -59,7 +59,7 @@ export default function Login() {
           empName: user
         }).then(response => {
           console.log('response >>> ', response);
-          if(response.data.data[0]===undefined)
+          if(response.data.data[0]["0"]===undefined)
             alert("User is invalid")
           else
             navigate('/mit');

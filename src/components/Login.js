@@ -36,16 +36,16 @@ export default function Login() {
     axios.post("http://localhost:5000/get_domain/", {
       Domain: d
     }).then(response => {
-      console.log('response >>> ', response.data.data[0]);
-      if(response.data.data[0]===undefined){
+      console.log('response >>> ',response);
+      if(response.data.data[0]["0"]===undefined){
         alert("organisation not found!")
       }else{
-      if (response.data.data[0].orgName === "Adamas University") {
+      if (response.data.data[0]["0"].orgName=== "Adamas University") {
         axios.post("http://localhost:5000/get_participant_adamas/", {
           empName: user
         }).then(response => {
-          console.log('response >>> ', response);
-          if(response.data.data[0]===undefined)
+          console.log('response >>> ', response.data.data[0]["0"]);
+          if(response.data.data[0]["0"]===undefined)
             alert("User is invalid");
           else
             navigate('/adamasuniversity');
@@ -54,7 +54,7 @@ export default function Login() {
         });
         
       }
-      if(response.data.data[0].orgName === "Mit") {
+      if(response.data.data[0]["0"].orgName === "Mit") {
         axios.post("http://localhost:5000/get_participant_mit/", {
           empName: user
         }).then(response => {

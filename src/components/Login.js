@@ -85,7 +85,7 @@ export default function Login() {
     }).catch(error => {
       console.error('error >>> ', error);
     });
-    // console.log(n);
+    console.log(n);
   }
   return (
     <div className='Log'>

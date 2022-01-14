@@ -36,6 +36,7 @@ export default function Adpage() {
                 <h1>Welcome {profile} to {university}</h1>
                 <br />
                 <table align="center" border="2">
+                    <tbody>
                     <tr>
                         <td>Name</td>
                         <td>{profile}</td>
@@ -48,6 +49,7 @@ export default function Adpage() {
                         <td>Phone No.</td>
                         <td>{phone}</td>
                     </tr>
+                    </tbody>
                 </table>
                 <p><em>You are now viewing {university} website...!!</em></p>
                 <button type="submit" className='btn btn-log' onClick={handleLogOut}>Log out</button>

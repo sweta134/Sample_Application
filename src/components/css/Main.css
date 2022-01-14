@@ -1,4 +1,5 @@
 body{
+    margin-top: 20px;
     background-color: rgba(211, 211, 211, 0.87);
 }
 .Log{
@@ -35,36 +36,43 @@ body{
 }
 
 .main-div{
-    margin: 100px auto;
+    margin: auto;
     display: block;
     width: 40%;
+}
+
+.main-div img{
+    width: 50%;
 }
 
 
 .main-div div{
     background-color: white;
     box-shadow: 4px 2px 1px 5px rgba(0, 0, 0, 0.03);
-    height: 140px;
+    height: 48px;
     border-radius: 5px;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-}
-.main-div div h1{
-    padding-top: 12px;
+    font-size: 0.85rem;
+    width: 100%;
+    margin-bottom: 0px !important;
 }
 
+.main-div div h1{
+    padding-top: 3px;
+}
 .main-div div p{
     text-decoration: underline;
     font-size: 0.9rem;
 }
 
 .img-mit{
-    width: 45%;
+    width: 40% !important;
 }
 table{
-    margin-top: 10px !important;
+    margin-top: -5px !important;
 }
 td{
     padding: 10px;
 }
 
+.btn-log{margin-bottom: 20px;
+margin-top: 2px !important;}

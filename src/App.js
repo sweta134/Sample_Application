@@ -20,13 +20,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route
-            path="/adamasuniversity"
+            path="/university"
             element={<Adpage/>}
-          />
-
-          <Route
-            path="/mit"
-            element={<MitPage/>}
           />
         </Routes>
       </div>

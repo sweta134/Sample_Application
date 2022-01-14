@@ -40,39 +40,49 @@ export default function Login() {
       if(response.data.data[0]["0"]===undefined){
         alert("organisation not found!")
       }else{
-      if (response.data.data[0]["0"].orgName=== "Adamas University") {
-        axios.post("http://localhost:5000/get_participant_adamas/", {
-          empName: user
-        }).then(response => {
-          console.log('response >>> ', response.data.data[0]["0"]);
-          if(response.data.data[0]["0"]===undefined)
-            alert("User is invalid");
-          else
-            navigate('/adamasuniversity');
-        }).catch(error => {
-          console.error('error >>> ', error);
-        });
-        
-      }
-      if(response.data.data[0]["0"].orgName === "Mit") {
-        axios.post("http://localhost:5000/get_participant_mit/", {
-          empName: user
-        }).then(response => {
-          console.log('response >>> ', response);
-          if(response.data.data[0]["0"]===undefined)
-            alert("User is invalid")
-          else
-            navigate('/mit');
-        }).catch(error => {
-          console.error('error >>> ', error);
-        });
-      }
+      axios.post("http://localhost:5000/get_database/", {
+        Domain: d
+      }).then(response => {
+        console.log('response >>> ',response);
+        console.log(response.data.data[0].database_name);
+        var database=response.data.data[0].database_name;
+         axios.post("http://localhost:5000/get_participant/", {
+              empName: user,
+              database:database
+            }).then(response => {
+              console.log('response >>> ', response.data.data[0]["0"]);
+              if(response.data.data[0]["0"]===undefined)
+                alert("User is invalid");
+              else
+                navigate('/adamasuniversity');
+            }).catch(error => {
+              console.error('error >>> ', error);
+            });
+          // if(response.data.data[0]["0"].orgName === "Mit") {
+          //   axios.post("http://localhost:5000/get_participant_mit/", {
+          //     empName: user
+          //   }).then(response => {
+          //     console.log('response >>> ', response);
+          //     if(response.data.data[0]["0"]===undefined)
+          //       alert("User is invalid")
+          //     else
+          //       navigate('/mit');
+          //   }).catch(error => {
+          //     console.error('error >>> ', error);
+          //   });
+          // }
+      }).catch(error => {
+        console.error('error >>> ', error);
+      });
+
+
+
       
     }
     }).catch(error => {
       console.error('error >>> ', error);
     });
-
+    // console.log(n);
   }
   return (
     <div className='Log'>

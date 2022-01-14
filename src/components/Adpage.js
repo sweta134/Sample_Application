@@ -13,11 +13,11 @@ export default function Adpage() {
     // useEffect(() => {
     //     getProductData();
     // }, []);
-    axios.post("http://localhost:5000/get_participant_adamas/", {
+    axios.post("http://localhost:5000/get_participant/", {
         empName: n
     }).then(response => {
-        console.log('response >>> ', response);
-        setprofile(response.data.data[0]["0"].empName)
+        // console.log('response >>> ', response);
+        setprofile(response.empName)
         setemail(response.data.data[0]["0"].empEmail)
         setphone(response.data.data[0]["0"].empPhoneNo)
     }).catch(error => {

@@ -1,28 +1,33 @@
 import { React, useState } from 'react';
 import axios from 'axios';
-import { database, n, university } from './Login';
+import { n,database, university } from './Login';
 import { useNavigate } from 'react-router';
 
 export default function Adpage() {
     const [profile, setprofile] = useState('unknown')
     const [email, setemail] = useState('unknown')
     const [phone, setphone] = useState('unknown')
-    const navigate = useNavigate()
-    console.log(n);
+    const navigate=useNavigate();
+    // const getProductData = async () => {
+    //     const a = await axios.post("http://localhost:5000/get_participant_adamas_adpage/");
+    //     console.log(a);
+    // };
+    // useEffect(() => {
+    //     getProductData();
+    // }, []);
     axios.post("http://localhost:5000/get_participant/", {
         empName: n,
-        database:database
+        database: database
     }).then(response => {
-        // console.log(typeof(response.data));
-        console.log('response >>> ', n);
-        setprofile(n.empName)
-        setemail(n.empEmail)
-        setphone(n.empPhoneNo)
+        // console.log('response >>> ', response);
+        setprofile(response.data.data[0]["0"].empName)
+        setemail(response.data.data[0]["0"].empEmail)
+        setphone(response.data.data[0]["0"].empPhoneNo)
     }).catch(error => {
         console.error('error >>> ', error);
     });
     const handleLogOut=()=>{
-        navigate('/')
+        navigate('/');
     }
     return (
         <div className='main-div'>
@@ -47,7 +52,7 @@ export default function Adpage() {
                     </tbody>
                 </table>
                 <p><em>You are now viewing {university} website...!!</em></p>
-                <button type="submit" className='btn' onClick={handleLogOut}>Log Out</button>
+                <button type="submit" className='btn btn-log' onClick={handleLogOut}>Log out</button>
             </div>
         </div>
     )

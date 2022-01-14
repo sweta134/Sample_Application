@@ -1,7 +1,6 @@
 import { React, useState } from 'react';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
-import Adpage from './Adpage';
 
 var n,d,database,university;
 
@@ -36,43 +35,31 @@ export default function Login() {
     axios.post("http://localhost:5000/get_domain/", {
       Domain: d
     }).then(response => {
-      console.log('response >>> ',response);
+      console.log('response >>> ',response.data.data[0]["0"]);
       if(response.data.data[0]["0"]===undefined){
         alert("organisation not found!")
+        setuser('')
       }else{
-      university=response.data.data[0]["0"].orgName;
-      axios.post("http://localhost:5000/get_database/", {
+        university=response.data.data[0]["0"].orgName
+        axios.post("http://localhost:5000/get_database/", {
         Domain: d
       }).then(response => {
         console.log('response >>> ',response);
-        console.log(response.data.data[0].database_name);
-        database=response.data.data[0].database_name;
+        console.log(response.data.data[0]["0"].database_name);
+        database=response.data.data[0]["0"].database_name;
          axios.post("http://localhost:5000/get_participant/", {
               empName: user,
               database:database
             }).then(response => {
               console.log('response >>> ', response.data.data[0]["0"]);
-              n=response.data.data[0]["0"]
-              if(response.data.data[0]["0"]===undefined)
+              if(response.data.data[0]["0"]===undefined){
                 alert("User is invalid");
-              else
-                navigate('/adamasuniversity');
+                setuser('')
+              }else
+                navigate('/university');
             }).catch(error => {
               console.error('error >>> ', error);
             });
-          // if(response.data.data[0]["0"].orgName === "Mit") {
-          //   axios.post("http://localhost:5000/get_participant_mit/", {
-          //     empName: user
-          //   }).then(response => {
-          //     console.log('response >>> ', response);
-          //     if(response.data.data[0]["0"]===undefined)
-          //       alert("User is invalid")
-          //     else
-          //       navigate('/mit');
-          //   }).catch(error => {
-          //     console.error('error >>> ', error);
-          //   });
-          // }
       }).catch(error => {
         console.error('error >>> ', error);
       });
@@ -96,6 +83,6 @@ export default function Login() {
     </div>
   )
 }
-export {database};
+export {database}
 export {n};
-export {university};
+export {university}

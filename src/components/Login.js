@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import Adpage from './Adpage';
 
-var n,d,database;
+var n,d,database,university;
 
 export default function Login() {
   const [user, setuser] = useState();
@@ -40,6 +40,7 @@ export default function Login() {
       if(response.data.data[0]["0"]===undefined){
         alert("organisation not found!")
       }else{
+      university=response.data.data[0]["0"].orgName;
       axios.post("http://localhost:5000/get_database/", {
         Domain: d
       }).then(response => {
@@ -97,3 +98,4 @@ export default function Login() {
 }
 export {database};
 export {n};
+export {university};

@@ -1,25 +1,21 @@
 import { React, useState } from 'react';
 import axios from 'axios';
-import { n } from './Login';
+import { database, n } from './Login';
 
 export default function Adpage() {
     const [profile, setprofile] = useState('unknown')
     const [email, setemail] = useState('unknown')
     const [phone, setphone] = useState('unknown')
-    // const getProductData = async () => {
-    //     const a = await axios.post("http://localhost:5000/get_participant_adamas_adpage/");
-    //     console.log(a);
-    // };
-    // useEffect(() => {
-    //     getProductData();
-    // }, []);
+    console.log(n);
     axios.post("http://localhost:5000/get_participant/", {
-        empName: n
+        empName: n,
+        database:database
     }).then(response => {
-        // console.log('response >>> ', response);
-        setprofile(response.empName)
-        setemail(response.data.data[0]["0"].empEmail)
-        setphone(response.data.data[0]["0"].empPhoneNo)
+        // console.log(typeof(response.data));
+        console.log('response >>> ', n);
+        setprofile(n.empName)
+        setemail(n.empEmail)
+        setphone(n.empPhoneNo)
     }).catch(error => {
         console.error('error >>> ', error);
     });
@@ -31,6 +27,7 @@ export default function Adpage() {
                 <h1>Welcome {profile} to Adamas University</h1>
                 <br />
                 <table align="center" border="2">
+                    <tbody>
                     <tr>
                         <td>Name</td>
                         <td>{profile}</td>
@@ -43,6 +40,7 @@ export default function Adpage() {
                         <td>Phone No.</td>
                         <td>{phone}</td>
                     </tr>
+                    </tbody>
                 </table>
                 <p><em>You are now viewing Adamas University website...!!</em></p>
             </div>
